@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: gray;
+
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.container{
+    width: 420px;
+    height: 420px;
+    /* linear-gradient(to right,black 50% , white 50%)
+    to right  ===> 从左到右，就是从左边开始渐变颜色
+    因为设置了50%，所以只是两种颜色，不会有渐变效果，就是黑白
+    */
+    background: linear-gradient(to right,black 50% , white 50%);
+    overflow: hidden;
+    border-radius: 50%;
+    animation: xuanzhuan 5s linear infinite;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@keyframes xuanzhuan{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.small{
+    width: 50%;
+    height: 50%;
+    border-radius: 50%;
+}
+.black{
+    /* radial-gradient(white 25%,black 25%)  颜色辐射 由内圈向外圈 25%是指占父元素的宽度多少 */
+    background: radial-gradient(white 25%,black 25%);
+    /* alternate  动画奇偶播放，这样就不会在完成一遍动画后闪回到开始位置，而是原路返回继续播放一遍 */
+    animation: black-box 3s linear infinite alternate;
+    /*  transform-origin: center top
+        出发点为中心的正上方
+
+        transform-origin: left
+        出发点为左侧中间   不写第二个默认是center
+
+        transform-origin: top left   ==== transform-origin:left top 
+        出发点为左上方
+    */
+    transform-origin: center top;
+}
+@keyframes black-box{
+    from{
+        transform: scale(0.5);
+    }
+    to{
+        transform: scale(1.5);
+    }
+}
+
+.white{
+    background: radial-gradient(black 25%,white 25%);
+    /* alternate  动画奇偶播放，这样就不会在完成一遍动画后闪回到开始位置，而是原路返回继续播放一遍 */
+    animation: white-box 3s linear infinite alternate;
+    transform-origin: center bottom;
+}
+@keyframes white-box{
+    from{
+        transform: scale(1.5);
+    }
+    to{
+        transform: scale(0.5);
+    }
+}
